@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOVA DIGITAL</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d19;color:white;font-family:Arial}
+header{padding:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:23px;font-weight:bold;color:#45d9ff}
+nav a{color:white;text-decoration:none;margin:8px}
+button,.btn{background:#45d9ff;color:#07101b;padding:13px 20px;border:0;border-radius:7px;font-weight:bold;cursor:pointer;text-decoration:none}
+.hero{text-align:center;padding:100px 20px}
+h1{font-size:42px}
+h2{margin-bottom:25px}
+span{color:#45d9ff}
+p{color:#bdc6d8;line-height:1.8}
+section{padding:65px 8%;text-align:center}
+.cards{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.card{background:#151f32;padding:28px;border-radius:12px;max-width:300px;flex:1;min-width:220px}
+.card h3{color:#45d9ff}
+form{max-width:500px;margin:30px auto;text-align:left}
+input,select,textarea{width:100%;padding:14px;margin:9px 0;background:#151f32;border:1px solid #34435c;border-radius:7px;color:white}
+footer{text-align:center;padding:30px}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;padding:15px;border-radius:30px;text-decoration:none;font-weight:bold}
+@media(max-width:600px){h1{font-size:32px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">NOVA DIGITAL</div>
+<nav>
+<a href="#home" data-fr="Accueil" data-en="Home">Accueil</a>
+<a href="#services" data-fr="Services" data-en="Services">Services</a>
+<a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+</nav>
+<button onclick="changeLanguage()" id="lang">EN</button>
+</header>
+
+<section class="hero" id="home">
+<h1 data-fr="Construisons votre avenir numérique" data-en="Build Your Digital Future">Construisons votre avenir numérique</h1>
+<p data-fr="Sites web, applications et solutions numériques pour les entreprises ambitieuses." data-en="Websites, applications and digital solutions for ambitious businesses.">Sites web, applications et solutions numériques pour les entreprises ambitieuses.</p>
+<a class="btn" href="#contact" data-fr="Démarrer un projet" data-en="Start a Project">Démarrer un projet</a>
+</section>
+
+<section id="services">
+<h2 data-fr="Nos services" data-en="Our Services">Nos services</h2>
+<div class="cards">
+<div class="card"><h3 data-fr="Sites web" data-en="Websites">Sites web</h3><p data-fr="Des sites modernes et professionnels." data-en="Modern professional websites.">Des sites modernes et professionnels.</p></div>
+<div class="card"><h3 data-fr="Applications" data-en="Applications">Applications</h3><p data-fr="Des applications web et mobiles." data-en="Web and mobile applications.">Des applications web et mobiles.</p></div>
+<div class="card"><h3 data-fr="Automatisation" data-en="Automation">Automatisation</h3><p data-fr="Des outils pour améliorer votre entreprise." data-en="Tools to improve your business.">Des outils pour améliorer votre entreprise.</p></div>
+</div>
+</section>
+
+<section id="contact">
+<h2 data-fr="Parlons de votre projet" data-en="Let's Discuss Your Project">Parlons de votre projet</h2>
+<form onsubmit="sendRequest(event)">
+<input id="name" placeholder="Votre nom / Your name" required>
+<input id="email" type="email" placeholder="Votre email / Your email" required>
+<input id="country" placeholder="Votre pays / Your country" required>
+<select id="project">
+<option value="Site web">Site web / Website</option>
+<option value="Application">Application / App</option>
+<option value="Automatisation">Automatisation / Automation</option>
+</select>
+<textarea id="details" placeholder="Décrivez votre projet / Describe your project" rows="4" required></textarea>
+<button type="submit" data-fr="Envoyer sur WhatsApp" data-en="Send via WhatsApp">Envoyer sur WhatsApp</button>
+</form>
+</section>
+
+<footer>© 2026 NOVA DIGITAL</footer>
+<a class="whatsapp" href="https://wa.me/2290166202417" target="_blank">WhatsApp</a>
+
+<script>
+let language="fr";
+function changeLanguage(){
+language=language==="fr"?"en":"fr";
+document.documentElement.lang=language;
+document.querySelectorAll("[data-fr]").forEach(e=>{
+e.textContent=e.getAttribute("data-"+language);
+});
+document.getElementById("lang").textContent=language==="fr"?"EN":"FR";
+}
+function sendRequest(event){
+event.preventDefault();
+let message="Nouvelle demande NOVA DIGITAL\nNom: "+document.getElementById("name").value+"\nEmail: "+document.getElementById("email").value+"\nPays: "+document.getElementById("country").value+"\nProjet: "+document.getElementById("project").value+"\nDétails: "+document.getElementById("details").value;
+window.open("https://wa.me/2290166202417?text="+encodeURIComponent(message),"_blank");
+}
+</script>
+</body>
+</html>
